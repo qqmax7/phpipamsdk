@@ -32,8 +32,13 @@ class PhpIpamApi(object):
         'accept': 'application/json',
         'content-type': 'application/json'
     }
+    #my
+    _api_session = object
 
     def __init__(self, api_uri=None, api_appcode=None, api_verify_ssl=None):
+        #my
+        self._api_session = requests.Session()
+
         if api_uri is None:
             self._api_uri = Configuration().api_uri
         else:
@@ -55,7 +60,8 @@ class PhpIpamApi(object):
     def api_send_request(self, path='', method='', auth='', payload=None):
         """ send HTTP REST request """
         try:
-            response = requests.request(
+        # my correct
+            response = self._api_session.request(
                 method=method,
                 url=self._api_uri + path,
                 auth=auth,
