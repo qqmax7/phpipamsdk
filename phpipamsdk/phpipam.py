@@ -81,7 +81,8 @@ class PhpIpamApi(object):
                     result['id'] = response.headers['Location'].split('/')[-2]
                 return result
             else:
-                raise PhpIpamException(response.text)
+                raise PhpIpamException(json.loads(response.text))
+                #raise PhpIpamException(response.text)
 
     def login(self, auth=None):
         """ authenticate to API """
