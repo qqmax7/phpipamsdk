@@ -24,3 +24,4 @@ from phpipamsdk.controllers import VlansApi
 from phpipamsdk.controllers import VRFsApi
 
 from phpipamsdk.phpipam import PhpIpamApi
+from phpipamsdk.phpipam import PhpIpamException
